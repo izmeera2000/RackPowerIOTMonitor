@@ -34,8 +34,8 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Voltage In</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      230V
+                    <h5 class="font-weight-bolder mb-0" id="v1">
+                      0 V
                     </h5>
                   </div>
                 </div>
@@ -56,8 +56,8 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Voltage Out</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      230V
+                    <h5 class="font-weight-bolder mb-0" id="v2">
+                     0 V
                     </h5>
                   </div>
                 </div>
@@ -85,8 +85,8 @@
                       <div class="col-8">
 
                       <p class="text-sm mb-0 text-capitalize font-weight-bold">Suhu</p>
-                        <h5 class="font-weight-bolder">
-                          60 &deg;C
+                        <h5 class="font-weight-bolder" id="temp">
+                          0 &deg;C
                         </h5>
                       </div>
                       <div class="col-4">
@@ -119,8 +119,8 @@
                       <div class="col-8">
 
                       <p class="text-sm mb-0 text-capitalize font-weight-bold">Battery Level</p>
-                        <h5 class="font-weight-bolder">
-                          60%
+                        <h5 class="font-weight-bolder" id="battery">
+                          0%
                         </h5>
                       </div>
                       <div class="col-4">
@@ -142,7 +142,7 @@
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-gradient-primary " role="progressbar" aria-valuenow="60"
-                          aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                          aria-valuemin="0" aria-valuemax="100" style="" id="battery-bar"></div>
                       </div>
                     </div>
                   </div>
@@ -712,8 +712,8 @@
       <?php include('footer.php') ?>
     </div>
   </main>
-
   <?php include('corejs.php') ?>
+<script>replay();</script>
 
 </body>
 
