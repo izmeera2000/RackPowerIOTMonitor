@@ -35,7 +35,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Voltage In</p>
                     <h5 class="font-weight-bolder mb-0">
-                      $53,000
+                      230V
                     </h5>
                   </div>
                 </div>
@@ -57,7 +57,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Voltage Out</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
+                      230V
                     </h5>
                   </div>
                 </div>
