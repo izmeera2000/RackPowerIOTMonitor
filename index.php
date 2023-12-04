@@ -85,6 +85,9 @@
                       <div class="col-8">
 
                         <h5 class="font-weight-bolder">Battery Level</h5>
+                        <h5 class="font-weight-bolder mb-0">
+                          60%
+                        </h5>
                       </div>
                       <div class="col-4">
 
@@ -96,10 +99,7 @@
                       </div>
                     </div>
 
-                    <p class="text-body text-sm text-bold font-weight-bold mb-0 icon-move-right mt-auto"
-                      href="javascript:;">
-                      50%
-                    </p>
+
 
                     <div class="progress-wrapper">
                       <div class="progress-info">
