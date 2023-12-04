@@ -522,7 +522,7 @@ function replay() {
 
       let v1 = document.getElementById("v1");
       v1.innerHTML = value3[0] + " V";
-      let v2 = document.getElementById("v1");
+      let v2 = document.getElementById("v2");
       v2.innerHTML = value4[0] + " V";
 
       let battery = document.getElementById("battery");
