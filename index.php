@@ -74,6 +74,40 @@
 
       </div>
       <div class="row mt-4">
+      <div class="col-lg-6 mb-lg-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="d-flex flex-column h-100">
+                    <!-- <p class="mb-1 pt-2 text-bold">Built by developers</p> -->
+                    <div class="row">
+                      <div class="col-8">
+
+                      <p class="text-sm mb-0 text-capitalize font-weight-bold">Suhu</p>
+                        <h5 class="font-weight-bolder">
+                          60 &deg;C
+                        </h5>
+                      </div>
+                      <div class="col-4">
+
+                        <div class=" text-end">
+                          <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="bi bi-thermometer-half text-lg opacity-10" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-lg-6 mb-lg-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
