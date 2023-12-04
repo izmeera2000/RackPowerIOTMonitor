@@ -41,7 +41,8 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="bi bi-lightning-fill text-lg opacity-10" aria-hidden="true"></i><i
+                      class="bi bi-arrow-bar-left text-lg opacity-10"></i>
                   </div>
                 </div>
               </div>
@@ -62,7 +63,8 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="bi bi-lightning-fill text-lg opacity-10" aria-hidden="true"></i><i
+                      class="bi bi-arrow-bar-right text-lg opacity-10"></i>
                   </div>
                 </div>
               </div>
@@ -79,10 +81,26 @@
                 <div class="col-lg-12">
                   <div class="d-flex flex-column h-100">
                     <!-- <p class="mb-1 pt-2 text-bold">Built by developers</p> -->
-                    <h5 class="font-weight-bolder">Battery Level</h5>
-                    <p class="text-body text-sm text-bold font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+                    <div class="row">
+                      <div class="col-8">
+
+                        <h5 class="font-weight-bolder">Battery Level</h5>
+                      </div>
+                      <div class="col-4">
+
+                        <div class=" text-end">
+                          <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="bi bi-lightning-charge text-lg opacity-10" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p class="text-body text-sm text-bold font-weight-bold mb-0 icon-move-right mt-auto"
+                      href="javascript:;">
                       50%
                     </p>
+
                     <div class="progress-wrapper">
                       <div class="progress-info">
                         <div class="progress-percentage">
@@ -95,7 +113,7 @@
                     </div>
                   </div>
                 </div>
-       
+
               </div>
             </div>
           </div>
