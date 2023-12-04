@@ -127,7 +127,7 @@
 
                         <div class=" text-end">
                           <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                            <i class="bi bi-lightning-charge text-lg opacity-10" aria-hidden="true"></i>
+                            <i class="bi bi-lightning-charge text-lg opacity-10" aria-hidden="true" id="battery-icon"></i>
                           </div>
                         </div>
                       </div>

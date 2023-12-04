@@ -531,6 +531,13 @@ function replay() {
       let batterybar = document.getElementById("battery-bar");
       batterybar.style.width = value5[0]+"%";
       batterybar.ariaValueNow = value5[0];
+      let batteryicon = document.getElementById("battery-icon");
+
+      if (value5[0] == 100){
+        batteryicon.className = "bi bi-lightning-charge-fill text-lg opacity-10"}
+      else{
+        batteryicon.className="bi bi-lightning-charge text-lg opacity-10";
+      }
       // mainChart1.data.labels = labelsc;
       // mainChart1.data.datasets[0].data = bpm;
       // mainChart1.update();
