@@ -713,7 +713,11 @@
     </div>
   </main>
   <?php include('corejs.php') ?>
-<script>replay();</script>
+<script>
+var run = setInterval(replay, 1000)
+
+
+</script>
 
 </body>
 

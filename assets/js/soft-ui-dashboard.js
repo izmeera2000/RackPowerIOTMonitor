@@ -496,7 +496,6 @@ function replay() {
   xhttp.open("POST", "functions.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  xhttp.send("receivedata=receivedata");
 
   xhttp.onload = function () {
     var data = JSON.parse(this.responseText);
@@ -553,5 +552,5 @@ function replay() {
       //  console.log(suhuchart.data.datasets[0].needleValue);
     }
   };
-  xhttp.send();
+  xhttp.send("receivedata=receivedata");
 }
