@@ -52,8 +52,11 @@ if (!isset($_SESSION['username'])) {
                       <i class="fa fa-ellipsis-v text-secondary"></i>
                     </a> -->
                     <form method="post">
+                      <?php if (isset($_SESSION["time1"])) { ?>
                       <button type="submit" class="btn btn-block btn-default" name="pdf"><i
                           class="fa fa-file-pdf-o text-primary"></i></button>
+
+                       <?php }   ?>
                       <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal"
                         data-bs-target="#modal-form"><i class="fa fa-cog text-primary"></i></button>
                     </form>
@@ -112,9 +115,18 @@ if (!isset($_SESSION['username'])) {
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                       <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div> -->
-                    <div class="text-center">
+                    <div class="row text-center">
+                      <div class="col text-center">
+                        
                       <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0"
-                        name="setmasa">Simpan</button>
+                          name="resetmasa">Reset</button>
+                      </div>
+
+                      <div class="col text-center">
+
+                        <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0"
+                          name="setmasa">Simpan</button>
+                      </div>
                     </div>
                   </div>
                   <!-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
@@ -170,7 +182,7 @@ if (!isset($_SESSION['username'])) {
             chart2.data.datasets[2].data = value2;
             chart2.update();
 
-          
+
           }
         };
         xhttp.send("receivedatalog=receivedatalog");

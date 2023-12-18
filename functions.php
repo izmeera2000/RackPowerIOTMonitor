@@ -63,7 +63,7 @@ if (isset($_POST['receivedatalog'])) {
 
         $query = "SELECT id, reading_time,device,temp,v1,v2,battery,DATE_FORMAT(reading_time, '%H:%i:%s'),DATE_FORMAT(reading_time, '%d-%m-%Y') FROM  data WHERE  reading_time BETWEEN '$time1' AND '$time2' ORDER BY reading_time DESC LIMIT  10 ";
         $result = mysqli_query($db, $query);
-        echo $query;
+        // echo $query;
         $data = array();
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
@@ -99,6 +99,11 @@ if (isset($_POST['setmasa'])) {
     $_SESSION["time2"] = $date2;
     // echo "asasaasdasdasdasdasdasdasdasdasdas";
     // debug_to_console($date1);
+}
+if (isset($_POST['resetmasa'])) {
+    unset( $_SESSION["time1"]);
+    unset( $_SESSION["time2"]);
+
 }
 
 if (isset($_POST['register'])) {
@@ -187,10 +192,39 @@ if (isset($_POST['pdf'])) {
     $tableb = new easyTable($pdf, '%{100}', 'border:0;font-size:8;');
     $tableb->easyCell('', 'img:assets/img/android-chrome-192x192.png,w40;valign:M;  align:C');
     $tableb->printRow();
+    $tableb->endTable();
+
+    $tablebahB = new easyTable($pdf, '%{10,24,22,22,22}', 'border:0;font-size:8;');
+    if (isset($_SESSION["time1"])) {
+        $time1 = $_SESSION["time1"];
+        $time2 = $_SESSION["time2"];
+
+        $query = "SELECT id, reading_time,device,temp,v1,v2,battery,DATE_FORMAT(reading_time, '%H:%i:%s'),DATE_FORMAT(reading_time, '%d-%m-%Y') FROM  data WHERE  reading_time BETWEEN '$time1' AND '$time2' ORDER BY reading_time DESC LIMIT  10 ";
+    } else {
+
+        $query = "SELECT id, reading_time,device,temp,v1,v2,battery,DATE_FORMAT(reading_time, '%H:%i:%s'),DATE_FORMAT(reading_time, '%d-%m-%Y') FROM data ORDER BY reading_time DESC LIMIT  10 ";
+
+    }
+    $result = mysqli_query($db, $query);
+$counter = 1;
+    while ($row = $result->fetch_assoc()) {
+
+        $tablebahB->easyCell($counter);
+        $tablebahB->easyCell($row['reading_time']);
+        $tablebahB->easyCell($row['temp']);
+        $tablebahB->easyCell($row['v1']);
+        $tablebahB->easyCell($row['v2']);
+        $tablebahB->printRow();
+        $counter += 1;
+    }
+    // $tablebahB->easyCell('asasa');
+    // $tablebahB->printRow();
+
+    $tablebahB->endTable();
 
     $pdf->Output();
 
-    ob_end_flush(); 
+    ob_end_flush();
 
 }
 ?>
