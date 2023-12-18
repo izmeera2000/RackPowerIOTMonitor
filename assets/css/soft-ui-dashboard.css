@@ -3707,8 +3707,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #cb0c9f;
-  --bs-btn-border-color: #cb0c9f;
+  --bs-btn-bg: #064179;
+  --bs-btn-border-color: #056DCE;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #ad0a87;
   --bs-btn-hover-border-color: #a20a7f;
@@ -10580,7 +10580,8 @@ fieldset:disabled .btn {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #cb0c9f !important;
+  color: #064179 !important;
+
 }
 
 .text-secondary {
