@@ -13,6 +13,10 @@ $errors2 = array();
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'rackiot');
 
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("location: login.php");
+}
 
 
 function debug_to_console($data)

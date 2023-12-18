@@ -24,10 +24,12 @@
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"
                 href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online Builder</a>
             </li> -->
-                <li class="nav-item d-flex align-items-center">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?php echo $_SESSION['username']?></span>
-            </li>
+                <!-- <li class="nav-item d-flex align-items-center">
+                    <i class="fa fa-user me-sm-1"></i>
+                    <span class="d-sm-inline d-none">
+                      
+                    </span>
+                </li> -->
                 <li class="nav-item d-xl-none ps-3  px-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                         <div class="sidenav-toggler-inner">
@@ -42,33 +44,39 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
             </li> -->
-                <!-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bell cursor-pointer"></i><span
-                            class="badge badge-md badge-circle badge-floating badge-danger border-white text-bg-primary position-absolute top-0 start-100" >3</span>
+                        <i class="fa fa-user cursor-pointer"></i>
+                        <?php echo $_SESSION['username'] ?>
+                        <!-- <span
+                            class="badge badge-md badge-circle badge-floating badge-danger border-white text-bg-primary position-absolute top-0 start-100" >3</span> -->
                     </a>
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                         aria-labelledby="dropdownMenuButton">
                         <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                            <a class="dropdown-item border-radius-md" href="?logout=1">
                                 <div class="d-flex py-1">
-                                    <div class="my-auto">
+                                    <!-- <div class="my-auto">
                                         <img src="assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
+                                    </div> -->
+                                    <div class="d-flex  justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
-                                            <span class="font-weight-bold">New message</span> from Laur
+                                            <!-- <span class="font-weight-bold">New message</span> from Laur -->
+                                        
+                                                Logout
+                                            
                                         </h6>
-                                        <p class="text-xs text-secondary mb-0 ">
-                                            <i class="fa fa-clock me-1"></i>
+                                        <!-- <p class="text-xs text-secondary mb-0 ">
+                                           
                                             13 minutes ago
-                                        </p>
+                                        </p> -->
+
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li class="mb-2">
+                        <!-- <li class="mb-2">
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
@@ -123,9 +131,9 @@
                                     </div>
                                 </div>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
-                </li> -->
+                </li>
             </ul>
         </div>
     </div>
