@@ -47,17 +47,14 @@ if (isset($_POST['receivedata'])) {
 }
 
 if (isset($_POST['api_key'])) {
-    $api_key_value = "tPmAT5Ab3j7F9";
-    $api_key = ($_POST["api_key"]);
-    if ($api_key == $api_key_value) {
-        $sensorname = ($_POST["sensor"]);
-        $temp = ($_POST["temp"]);
-        $v1 = ($_POST["v1"]);
-        $v2 = ($_POST["v2"]);
-        $batterylevel = ($_POST["batterylevel"]);
-        $query = "INSERT INTO data (device,temp,v1,v2,battery) VALUES ('$sensorname','$temp','$v1','$v2','$batterylevel') ";
-        $result = mysqli_query($db, $query);
+    $query = "SELECT * FROM data LIMIT  1 ";
+    $result = mysqli_query($db, $query);
+
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
     }
+    echo json_encode($data);
 
 }
 
