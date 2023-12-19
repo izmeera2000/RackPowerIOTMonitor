@@ -6,7 +6,7 @@
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
         target="_blank">
         <img src="assets/img/android-chrome-192x192.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Rack Power IOT Monitor</span>
+        <span class="ms-1 font-weight-bold">SISTEM PEMANTAUAN STOK MESIN LAYAN DIRI</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -39,7 +39,7 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item ">
+        <!-- <li class="nav-item ">
           <a class="nav-link <?php echo ($pagetitle == "log" ? "active" : " ") ?>" href="log.php">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -64,7 +64,7 @@
             </div>
             <span class="nav-link-text ms-1">Log</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
           <a class="nav-link  " href="pages/tables.html">
             <div

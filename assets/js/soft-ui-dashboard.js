@@ -568,27 +568,27 @@ function replay() {
         value5.push(data[i]["battery"]);
       }
 
-      let temp = document.getElementById("temp");
-      temp.innerHTML = value2[0] + " &deg;C";
+      // let temp = document.getElementById("temp");
+      // temp.innerHTML = value2[0] + " &deg;C";
 
       let v1 = document.getElementById("v1");
       v1.innerHTML = value3[0] + " V";
       let v2 = document.getElementById("v2");
       v2.innerHTML = value4[0] + " V";
 
-      let battery = document.getElementById("battery");
-      battery.innerHTML = value5[0] + "%";
+      // let battery = document.getElementById("battery");
+      // battery.innerHTML = value5[0] + "%";
 
-      let batterybar = document.getElementById("battery-bar");
-      batterybar.style.width = value5[0]+"%";
-      batterybar.ariaValueNow = value5[0];
-      let batteryicon = document.getElementById("battery-icon");
+      // let batterybar = document.getElementById("battery-bar");
+      // batterybar.style.width = value5[0]+"%";
+      // batterybar.ariaValueNow = value5[0];
+      // let batteryicon = document.getElementById("battery-icon");
 
-      if (value5[0] == 100){
-        batteryicon.className = "bi bi-lightning-charge-fill text-lg opacity-10"}
-      else{
-        batteryicon.className="bi bi-lightning-charge text-lg opacity-10";
-      }
+      // if (value5[0] == 100){
+      //   batteryicon.className = "bi bi-lightning-charge-fill text-lg opacity-10"}
+      // else{
+      //   batteryicon.className="bi bi-lightning-charge text-lg opacity-10";
+      // }
       // mainChart1.data.labels = labelsc;
       // mainChart1.data.datasets[0].data = bpm;
       // mainChart1.update();
