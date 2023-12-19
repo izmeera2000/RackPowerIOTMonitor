@@ -12,14 +12,17 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-<?php include('functions.php');
-// if (!isset($_SESSION['username'])) {
-//   // $_SESSION['msg'] = "You must log in first";
-//   header('location: lamanutama.php');
-// }
+<?php
+include('functions.php');
+
+
+  if (!isset($_SESSION['username'])) {
+    header('location: login.php');
+
+  }
 ?>
 
-<?php $pagetitle = "dashboard"?>
+<?php $pagetitle = "dashboard" ?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- <?php echo $pagetitle; ?> -->
@@ -66,7 +69,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Voltage Out</p>
                     <h5 class="font-weight-bolder mb-0" id="v2">
-                     0 V
+                      0 V
                     </h5>
                   </div>
                 </div>
@@ -83,7 +86,7 @@
 
       </div>
       <div class="row mt-4">
-      <div class="col-lg-6 mb-lg-0 mb-4">
+        <div class="col-lg-6 mb-lg-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
@@ -93,7 +96,7 @@
                     <div class="row">
                       <div class="col-8">
 
-                      <p class="text-sm mb-0 text-capitalize font-weight-bold">Suhu</p>
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Suhu</p>
                         <h5 class="font-weight-bolder" id="temp">
                           0 &deg;C
                         </h5>
@@ -127,7 +130,7 @@
                     <div class="row">
                       <div class="col-8">
 
-                      <p class="text-sm mb-0 text-capitalize font-weight-bold">Battery Level</p>
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Battery Level</p>
                         <h5 class="font-weight-bolder" id="battery">
                           0%
                         </h5>
@@ -136,7 +139,8 @@
 
                         <div class=" text-end">
                           <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                            <i class="bi bi-lightning-charge text-lg opacity-10" aria-hidden="true" id="battery-icon"></i>
+                            <i class="bi bi-lightning-charge text-lg opacity-10" aria-hidden="true"
+                              id="battery-icon"></i>
                           </div>
                         </div>
                       </div>
@@ -161,16 +165,16 @@
             </div>
           </div>
         </div>
-        
-      <?php include('footer.php') ?>
-    </div>
+
+        <?php include('footer.php') ?>
+      </div>
   </main>
   <?php include('corejs.php') ?>
-<script>
-var run = setInterval(replay, 1000)
+  <script>
+    var run = setInterval(replay, 1000)
 
 
-</script>
+  </script>
 
 </body>
 

@@ -12,6 +12,58 @@
 
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
+window.onload = () => {
+  // (A1) ASK FOR PERMISSION
+  if (Notification.permission === "default") {
+    Notification.requestPermission().then(perm => {
+      if (Notification.permission === "granted") {
+        regWorker().catch(err => console.error(err));
+      } else {
+        alert("Please allow notifications.");
+      }
+    });
+  } 
+ 
+  // (A2) GRANTED
+  else if (Notification.permission === "granted") {
+    regWorker().catch(err => console.error(err));
+  }
+
+  // (A3) DENIED
+  else { alert("Please allow notifications."); }
+}
+// (B) REGISTER SERVICE WORKER
+async function regWorker () {
+  // (B1) YOUR PUBLIC KEY - CHANGE TO YOUR OWN!
+  const publicKey = "BAvoKBUHaF1sy1-l2mUdTlMls0zwsYpsCmXvLsxXpLdeYTnKOZvS--Ia9HgQuTINB9EeVwzhRUYwBNxZOc84axI";
+ 
+  // (B2) REGISTER SERVICE WORKER
+  navigator.serviceWorker.register("sw.js");
+ 
+  // (B3) SUBSCRIBE TO PUSH SERVER
+  navigator.serviceWorker.ready
+  .then(reg => {
+    reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: publicKey
+    }).then(
+      // (B3-1) OK - TEST PUSH NOTIFICATION
+      sub => {
+        var data = new FormData();
+        data.append("sub", JSON.stringify(sub));
+        fetch("functions.php", { method: "POST", body : data })
+        .then(res => res.text())
+        .then(txt => console.log(txt))
+        .catch(err => console.error(err));
+      },
+ 
+      // (B3-2) ERROR!
+      err => console.error(err)
+    );
+  });
+}
+
+
 "use strict";
 (function () {
   var isWindows = navigator.platform.indexOf("Win") > -1 ? true : false;
@@ -554,3 +606,5 @@ function replay() {
   };
   xhttp.send("receivedata=receivedata");
 }
+
+

@@ -2,6 +2,8 @@
 include 'assets/vendor/autoload.php';
 
 use setasign\Fpdi\Fpdi;
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
 
 session_start();
 // initializing variables
@@ -105,8 +107,8 @@ if (isset($_POST['setmasa'])) {
     // debug_to_console($date1);
 }
 if (isset($_POST['resetmasa'])) {
-    unset( $_SESSION["time1"]);
-    unset( $_SESSION["time2"]);
+    unset($_SESSION["time1"]);
+    unset($_SESSION["time2"]);
 
 }
 
@@ -210,7 +212,7 @@ if (isset($_POST['pdf'])) {
 
     }
     $result = mysqli_query($db, $query);
-$counter = 1;
+    $counter = 1;
     while ($row = $result->fetch_assoc()) {
 
         $tablebahB->easyCell($counter);
@@ -231,4 +233,82 @@ $counter = 1;
     ob_end_flush();
 
 }
+
+
+function sendemail_alert($receiver, $v1, $v2, $temp)
+{
+
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.google.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
+        $mail->Password = 'tabikakemas33';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+
+        //Recipients
+        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->addAddress($receiver);     //Add a recipient
+
+        //Content
+        $mail->isHTML(true); //Set email format to HTML
+        $tarikh = date('M Y');
+        $mail->Subject = "Kemasukan Tidak Diterima";
+        ob_start();
+        require_once 'assets/email/kemasukantak.php';
+        $output = ob_get_clean();
+        $mail->Body = $output;
+
+
+
+
+        $mail->send();
+        // echo 'Message has been sent';
+
+    } catch (Exception $e) {
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // array_push($errors2, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+
+    }
+}
+
+if (isset($_POST['sub'])) {
+    // (B) GET SUBSCRIPTION
+    $sub = Subscription::create(json_decode($_POST["sub"], true));
+    // $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
+
+    // (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
+    $push = new WebPush(["VAPID" => [
+        "subject" => "izmeera2000@gmail.com",
+        "publicKey" => "BAvoKBUHaF1sy1-l2mUdTlMls0zwsYpsCmXvLsxXpLdeYTnKOZvS--Ia9HgQuTINB9EeVwzhRUYwBNxZOc84axI",
+        "privateKey" => "qbpOKMoIFMtAnlflzmKlxO94NCfv4fzSlaPkTXYwqDY"
+    ]]);
+
+    // (D) SEND TEST PUSH NOTIFICATION
+    $result = $push->sendOneNotification($sub, json_encode([
+        "title" => "Selamat Datang!",
+        "body" => "Sila Tunggu",
+        "icon" => "assets/img/favicon.ico",
+        //   "image" => "assets/img/android-chrome-192x192.png"
+    ]));
+    $endpoint = $result->getRequest()->getUri()->__toString();
+
+    // (E) SHOW RESULT - OPTIONAL
+    if ($result->isSuccess()) {
+        echo "Successfully sent {$endpoint}.";
+    } else {
+        echo "Send failed {$endpoint}: {$result->getReason()}";
+        $result->getRequest();
+        $result->getResponse();
+        $result->isSubscriptionExpired();
+    }
+}
+
 ?>
