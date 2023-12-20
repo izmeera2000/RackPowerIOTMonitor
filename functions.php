@@ -59,6 +59,7 @@ if (isset($_GET['api_key'])) {
 
 }
 
+
 if (isset($_POST['receivedatalog'])) {
 
     if (isset($_SESSION["time1"])) {
@@ -348,4 +349,26 @@ if (isset($_POST['edit2'])) {
 
 
 }
+
+
+if (isset($_GET['stock2'])) {
+
+    $stock2 = $_POST['val2'];
+
+    $query = "SELECT * FROM data  ORDER BY id DESC LIMIT  1";
+    $result = mysqli_query($db, $query);
+
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+      // $data[] = $row;
+    //   $stock1 = $row['v1'];
+      $stock1 = $row['v1'];
+    }
+
+    $query = "INSERT INTO data (v1,v2) VALUES ('$stock1','$stock2')";
+    $result = mysqli_query($db, $query);
+
+
+}
+
 ?>
