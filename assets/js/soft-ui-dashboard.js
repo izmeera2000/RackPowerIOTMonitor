@@ -654,28 +654,7 @@ function replay2() {
         value5.push(data[i]["battery"]);
       }
 
-      if (value5[0] < 51){
-        navigator.serviceWorker.ready
-        .then(reg => {
-          reg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: publicKey
-          }).then(
-            // (B3-1) OK - TEST PUSH NOTIFICATION
-            sub => {
-              var data = new FormData();
-              data.append("sub2", JSON.stringify(sub));
-              fetch("functions.php", { method: "POST", body : data })
-              .then(res => res.text())
-              .then(txt => console.log(txt))
-              .catch(err => console.error(err));
-            },
-       
-            // (B3-2) ERROR!
-            err => console.error(err)
-          );
-        });
-      }
+
 
     
       // mainChart1.data.labels = labelsc;
@@ -693,5 +672,5 @@ function replay2() {
       //  console.log(suhuchart.data.datasets[0].needleValue);
     }
   };
-  xhttp.send("receivedata=receivedata");
+  xhttp.send("receivedata=receivedata&sub2=sub2");
 }
