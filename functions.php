@@ -46,7 +46,7 @@ if (isset($_POST['receivedata'])) {
     echo json_encode($data);
 }
 
-if (isset($_POST['api_key'])) {
+if (isset($_GET['api_key'])) {
     $query = "SELECT * FROM data LIMIT  1 ";
     $result = mysqli_query($db, $query);
 
