@@ -68,7 +68,7 @@ void setup() {
   lcd.setCursor(0, 1);
   lcd.print("     COIN      ");
   Timer = millis();
-
+  GetSTOCK();
   // virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "   ");
   // virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "   ");
   // // myservo.attach(MOTOR2);  // attaches the servo on pin 13 to the servo object
