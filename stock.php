@@ -39,28 +39,10 @@ if (!isset($_SESSION['username'])) {
           <div class="card ">
             <div class="card-header ">
               <div class="row">
-                <div class="col-lg-6 col-7">
+                <div class="col">
                   <h6>Manage Stock</h6>
-                  <p class="text-sm mb-0">
-                    <!-- <i class="fa fa-check text-info" aria-hidden="true"></i> -->
-                    <!-- <span class="font-weight-bold ms-1">30 done</span> this month -->
-                  </p>
-                </div>
-                <div class="col-lg-6 col-5 my-auto text-end">
-                  <div class="dropdown float-lg-end pe-4">
-                    <!-- <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-ellipsis-v text-secondary"></i>
-                    </a> -->
-                    <!-- <form method="post">
-                      <?php if (isset($_SESSION["time1"])) { ?>
-                      <button type="submit" class="btn btn-block btn-default" name="pdf"><i
-                          class="fa fa-file-pdf-o text-primary"></i></button>
-
-                       <?php }   ?>
-                      <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal"
-                        data-bs-target="#modal-form"><i class="fa fa-cog text-primary"></i></button>
-                    </form> -->
-                    <div class="row">
+       
+                  <div class="row">
                     <div class="col-md-6 mb-md-0 mb-4">
                       <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                         <img class="w-10 me-3 mb-0" src="../assets/img/logos/mastercard.png" alt="logo">
@@ -75,15 +57,8 @@ if (!isset($_SESSION['username'])) {
                         <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
                       </div>
                     </div>
-
-                    <!-- <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" data-bs-toggle="modal"
-                          data-bs-target="#modal-form">Tarikh</a></li> -->
-                    <!-- <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li> -->
-                    <!-- <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li> -->
-                    <!-- </ul> -->
-                  </div>
                 </div>
+         
               </div>
             </div>
             <div class="card-body ">
