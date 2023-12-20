@@ -248,12 +248,12 @@ void GetSTOCK() {
         Serial.println(value);
         sensorReadingsArr[i] = double(value);
       }
-      Serial.print("1 = ");
-      Serial.println(sensorReadingsArr[4]);
-      Serial.print("2 = ");
-      Serial.println(sensorReadingsArr[5]);
-      Serial.print("3 = ");
-      Serial.println(sensorReadingsArr[2]);
+      // Serial.print("1 = ");
+      // Serial.println(sensorReadingsArr[4]);
+      // Serial.print("2 = ");
+      // Serial.println(sensorReadingsArr[5]);
+      // Serial.print("3 = ");
+      // Serial.println(sensorReadingsArr[2]);
       }
       else {
         Serial.print("Error code: ");

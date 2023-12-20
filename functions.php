@@ -52,7 +52,8 @@ if (isset($_GET['api_key'])) {
 
     $data = array();
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $data["v1"] = $row['v1'];
+        $data["v2"] = $row['v2'];
     }
     echo json_encode($data);
 
