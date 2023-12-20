@@ -103,7 +103,6 @@ void setup() {
   // Print ESP32 Local IP Address
   Serial.println(WiFi.localIP());
 
-  GetSTOCK();
 }
 
 void loop() {
@@ -113,6 +112,8 @@ void loop() {
     countreal = count - 100;
     // Serial.println("COUNTREAL:" + String(countreal) + " ");
     Timer = millis();
+  GetSTOCK();
+
   }
 
   //DUIT SYIILING
