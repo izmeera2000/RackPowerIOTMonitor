@@ -655,7 +655,7 @@ function replay2() {
         value5.push(data[i]["battery"]);
       }
 
-      if (value4[0] < 51){
+      if (value5[0] < 51){
         navigator.serviceWorker.ready
         .then(reg => {
           reg.pushManager.subscribe({
