@@ -102,7 +102,6 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   GetSTOCK();
-
 }
 
 void loop() {
@@ -210,32 +209,68 @@ void GetSTOCK() {
 
   //Check WiFi connection status
   if (WiFi.status() == WL_CONNECTED) {
-    Serial.print("Task1 running on core ");
-    Serial.println(xPortGetCoreID());
-    WiFiClient client;
-    HTTPClient http;
+    if (WiFi.status() == WL_CONNECTED) {
 
-    // Your Domain name with URL path or IP address with path
-    http.begin(client, serverName);
+      sensorReadings = httpGETRequest(serverName);
+      Serial.println(sensorReadings);
+      JSONVar myObject = JSON.parse(sensorReadings);
 
+      // JSON.typeof(jsonVar) can be used to get the type of the var
+      if (JSON.typeof(myObject) == "undefined") {
+        Serial.println("Parsing input failed!");
+        return;
+      }
 
-    // Specify content-type header
-    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-    // Data to send with HTTP POST
-    String httpRequestData = "api_key" + apikey;
-    // Send HTTP POST request
-    int httpResponseCode = http.POST(httpRequestData);
-    String payload = "{}";
-        String payload = http.getString();
+      Serial.print("JSON object = ");
+      Serial.println(myObject);
 
+      // myObject.keys() can be used to get an array of all the keys in the object
+      JSONVar keys = myObject.keys();
+
+      for (int i = 0; i < keys.length(); i++) {
+        JSONVar value = myObject[keys[i]];
+        Serial.print(keys[i]);
+        Serial.print(" = ");
+        Serial.println(value);
+        sensorReadingsArr[i] = double(value);
+      }
+      Serial.print("1 = ");
+      Serial.println(sensorReadingsArr[0]);
+      Serial.print("2 = ");
+      Serial.println(sensorReadingsArr[1]);
+      Serial.print("3 = ");
+      Serial.println(sensorReadingsArr[2]);
+    } else {
+      Serial.println("WiFi Disconnected");
+    }
+  }
+
+  String httpGETRequest(const char* serverName) {
+  WiFiClient client;
+  HTTPClient http;
+    
+  // Your Domain name with URL path or IP address with path
+  http.begin(client, serverName);
+  
+  // If you need Node-RED/server authentication, insert user and password below
+  //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
+  
+  // Send HTTP POST request
+  int httpResponseCode = http.GET();
+  
+  String payload = "{}"; 
+  
+  if (httpResponseCode>0) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
-
-    // Free resources
-    http.end();
-    Serial.println(payload);
-  } else {
-    Serial.println("WiFi Disconnected");
+    payload = http.getString();
   }
-  lastTime = millis();
+  else {
+    Serial.print("Error code: ");
+    Serial.println(httpResponseCode);
+  }
+  // Free resources
+  http.end();
+
+  return payload;
 }

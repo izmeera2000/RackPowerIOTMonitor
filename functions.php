@@ -308,4 +308,43 @@ if (isset($_POST['sub'])) {
     }
 }
 
+
+if (isset($_POST['edit1'])) {
+
+    $stock1 = $_POST['val1'];
+
+    $query = "SELECT * FROM data  ORDER BY id DESC LIMIT  1";
+    $result = mysqli_query($db, $query);
+
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+      // $data[] = $row;
+    //   $stock1 = $row['v1'];
+      $stock2 = $row['v2'];
+    }
+
+    $query = "INSERT INTO data (v1,v2) VALUES ('$stock1','$stock2')";
+    $result = mysqli_query($db, $query);
+
+
+}
+if (isset($_POST['edit2'])) {
+
+    $stock2 = $_POST['val2'];
+
+    $query = "SELECT * FROM data  ORDER BY id DESC LIMIT  1";
+    $result = mysqli_query($db, $query);
+
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+      // $data[] = $row;
+    //   $stock1 = $row['v1'];
+      $stock1 = $row['v1'];
+    }
+
+    $query = "INSERT INTO data (v1,v2) VALUES ('$stock1','$stock2')";
+    $result = mysqli_query($db, $query);
+
+
+}
 ?>

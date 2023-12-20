@@ -51,7 +51,13 @@ if (!isset($_SESSION['username'])) {
                 }
                 // echo json_encode($data);
                 ?>
-                <div class="col">
+         
+              </div>
+              <div class="card-body ">
+                <!-- <div class="chart">
+                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+              </div> -->
+              <div class="col">
                   <h6>Manage Stock</h6>
 
                   <div class="row">
@@ -62,7 +68,9 @@ if (!isset($_SESSION['username'])) {
                         <!-- <img class="w-10 me-3 mb-0" src="assets/img/logos/mastercard.png" alt="logo"> -->
                         <i class="bi bi-basket w-10 me-3 mb-0"></i>
 
-                        <h6 class="mb-0 text-center"><?php echo $stock1 ?></h6>
+                        <h6 class="mb-0 text-center">
+                          <?php echo $stock1 ?>
+                        </h6>
                         <button class="btn btn-block ms-auto text-dark cursor-pointer" data-bs-toggle="modal"
                           data-bs-target="#exampleModal" type="button">
                           <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
@@ -78,7 +86,9 @@ if (!isset($_SESSION['username'])) {
                         <!-- <img class="w-10 me-3 mb-0" src="assets/img/logos/visa.png" alt="logo"> -->
                         <i class="bi bi-basket2 w-10 me-3 mb-0"></i>
 
-                        <h6 class="mb-0 text-center"><?php echo $stock2 ?></h6>
+                        <h6 class="mb-0 text-center">
+                          <?php echo $stock2 ?>
+                        </h6>
                         <button class="btn btn-block ms-auto text-dark cursor-pointer" data-bs-toggle="modal"
                           data-bs-target="#exampleModal2" type="button">
                           <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
@@ -91,12 +101,6 @@ if (!isset($_SESSION['username'])) {
 
                 </div>
               </div>
-              <div class="card-body ">
-                <!-- <div class="chart">
-                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-              </div> -->
-
-              </div>
             </div>
           </div>
 
@@ -104,57 +108,57 @@ if (!isset($_SESSION['username'])) {
 
       </div>
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <form method="post">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Manage Stock 1</h5>
-            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="example-number-input" class="form-control-label">Total</label>
-              <input class="form-control" type="number" value="<?php echo $stock1 ?>" id="example-number-input">
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <form method="post">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Manage Stock 1</h5>
+                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="example-number-input" class="form-control-label">Total</label>
+                  <input class="form-control" type="number" value="<?php echo $stock1 ?>" id="example-number-input" name="val1">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-gradient-primary" name="edit1">Save changes</button>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn bg-gradient-primary" name="edit1">Save changes</button>
-          </div>
-        </div>
-      </form>
+          </form>
 
-    </div>
-  </div>
-  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <form method="post">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Manage Stock 2</h5>
-            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="example-number-input" class="form-control-label">Total</label>
-              <input class="form-control" type="number" value="<?php echo $stock2 ?>" id="example-number-input">
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <form method="post">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Manage Stock 2</h5>
+                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="example-number-input" class="form-control-label">Total</label>
+                  <input class="form-control" type="number" value="<?php echo $stock2 ?>" id="example-number-input" name="val2">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-gradient-primary" name="edit1">Save changes</button>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn bg-gradient-primary" name="edit1">Save changes</button>
-          </div>
-        </div>
-      </form>
+          </form>
 
-    </div>
-  </div>
+        </div>
+      </div>
       <div>
         <!-- <button type="button" class="btn btn-block btn-default mb-3" >Form</button> -->
         <form role="form text-center" method="post" action="">
