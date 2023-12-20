@@ -40,7 +40,7 @@ if (!isset($_SESSION['username'])) {
             <div class="card-header ">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>Data Incoming</h6>
+                  <h6>Manage Stock</h6>
                   <p class="text-sm mb-0">
                     <!-- <i class="fa fa-check text-info" aria-hidden="true"></i> -->
                     <!-- <span class="font-weight-bold ms-1">30 done</span> this month -->
@@ -51,7 +51,7 @@ if (!isset($_SESSION['username'])) {
                     <!-- <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-ellipsis-v text-secondary"></i>
                     </a> -->
-                    <form method="post">
+                    <!-- <form method="post">
                       <?php if (isset($_SESSION["time1"])) { ?>
                       <button type="submit" class="btn btn-block btn-default" name="pdf"><i
                           class="fa fa-file-pdf-o text-primary"></i></button>
@@ -59,8 +59,22 @@ if (!isset($_SESSION['username'])) {
                        <?php }   ?>
                       <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal"
                         data-bs-target="#modal-form"><i class="fa fa-cog text-primary"></i></button>
-                    </form>
-
+                    </form> -->
+                    <div class="row">
+                    <div class="col-md-6 mb-md-0 mb-4">
+                      <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                        <img class="w-10 me-3 mb-0" src="../assets/img/logos/mastercard.png" alt="logo">
+                        <h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
+                        <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                        <img class="w-10 me-3 mb-0" src="../assets/img/logos/visa.png" alt="logo">
+                        <h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248</h6>
+                        <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
+                      </div>
+                    </div>
 
                     <!-- <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
                       <li><a class="dropdown-item border-radius-md" data-bs-toggle="modal"
@@ -76,7 +90,7 @@ if (!isset($_SESSION['username'])) {
               <!-- <div class="chart">
                 <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
               </div> -->
-              
+
             </div>
           </div>
         </div>
