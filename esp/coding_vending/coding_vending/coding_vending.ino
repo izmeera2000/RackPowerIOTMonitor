@@ -249,9 +249,9 @@ void GetSTOCK() {
         sensorReadingsArr[i] = double(value);
       }
       Serial.print("1 = ");
-      Serial.println(sensorReadingsArr[0]);
+      Serial.println(sensorReadingsArr[4]);
       Serial.print("2 = ");
-      Serial.println(sensorReadingsArr[1]);
+      Serial.println(sensorReadingsArr[5]);
       Serial.print("3 = ");
       Serial.println(sensorReadingsArr[2]);
       }
