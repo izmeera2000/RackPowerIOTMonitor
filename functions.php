@@ -4,7 +4,9 @@ include 'assets/vendor/autoload.php';
 use setasign\Fpdi\Fpdi;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 session_start();
 // initializing variables
 $username = "";
@@ -314,34 +316,82 @@ if (isset($_POST['sub'])) {
 
 if (isset($_POST['sub2'])) {
     // (B) GET SUBSCRIPTION
-    $sub = Subscription::create(json_decode($_POST["sub2"], true));
-    // $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
+    // $sub = Subscription::create(json_decode($_POST["sub2"], true));
+    // // $endpoint = 'https://fcm.googleapis.com/fcm/send/abcdef...'; // Chrome
 
-    // (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
-    $push = new WebPush(["VAPID" => [
-        "subject" => "izmeera2000@gmail.com",
-        "publicKey" => "BAvoKBUHaF1sy1-l2mUdTlMls0zwsYpsCmXvLsxXpLdeYTnKOZvS--Ia9HgQuTINB9EeVwzhRUYwBNxZOc84axI",
-        "privateKey" => "qbpOKMoIFMtAnlflzmKlxO94NCfv4fzSlaPkTXYwqDY"
-    ]]);
 
-    // (D) SEND TEST PUSH NOTIFICATION
-    $result = $push->sendOneNotification($sub, json_encode([
-        "title" => "Battery Low",
-        "body" => "Battery Low",
-        "icon" => "assets/img/favicon.ico",
-        //   "image" => "assets/img/android-chrome-192x192.png"
-    ]));
-    $endpoint = $result->getRequest()->getUri()->__toString();
+    // debug_to_console($_POST["sub2"]);
 
-    // (E) SHOW RESULT - OPTIONAL
-    if ($result->isSuccess()) {
-        echo "Successfully sent {$endpoint}.";
-    } else {
-        echo "Send failed {$endpoint}: {$result->getReason()}";
-        $result->getRequest();
-        $result->getResponse();
-        $result->isSubscriptionExpired();
+    // // (C) NEW WEB PUSH OBJECT - CHANGE TO YOUR OWN!
+    // $push = new WebPush(["VAPID" => [
+    //     "subject" => "mailto: <izmeera2000@gmail.com>",
+    //     "publicKey" => "BIwxyzlV6TbuuRpdKP-zISQKJ8J4-TBcLLN0nQzF4amUZ3zHXsGW6DVR17NcTHLXcUATABin_z4xTh9kvRsJl0g",
+    //     "privateKey" => "R-W8FR4ziQkbPhnn07qcqHLOxW1vxu3Sbv7PVgHrXNU"
+    // ]]);
+
+    // // (D) SEND TEST PUSH NOTIFICATION
+    // $result = $push->sendOneNotification($sub, json_encode([
+    //     "title" => "Battery Low",
+    //     "body" => "Battery Low",
+    //     "icon" => "assets/img/favicon.ico",
+    //     //   "image" => "assets/img/android-chrome-192x192.png"
+    // ]));
+    // $endpoint = $result->getRequest()->getUri()->__toString();
+
+    // // (E) SHOW RESULT - OPTIONAL
+    // if ($result->isSuccess()) {
+    //     echo "Successfully sent {$endpoint}.";
+    // } else {
+    //     echo "Send failed {$endpoint}: {$result->getReason()}";
+    //     $result->getRequest();
+    //     $result->getResponse();
+    //     $result->isSubscriptionExpired();
+    // }
+    sendmail_yuran("pemantaurackserver@gmail.com" , " " , " ");
+
+    
+}
+function sendmail_yuran($receiver, $nama, $ic)
+{
+
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'mail.tabikakemas.com.my';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'info@tabikakemas.com.my';                     //SMTP username
+        $mail->Password = 'tabikakemas33';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+
+        //Recipients
+        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->addAddress($receiver);     //Add a recipient
+
+        //Content
+        $mail->isHTML(true); //Set email format to HTML
+        $tarikh = date('M Y');
+        $mail->Subject = "Battery Low";
+        ob_start();
+        require_once 'assets/email/battery.php';
+        $output = ob_get_clean();
+        $mail->Body = $output;
+
+
+
+
+        $mail->send();
+        // echo 'Message has been sent';
+
+    } catch (Exception $e) {
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // array_push($errors2, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+
     }
 }
-
 ?>

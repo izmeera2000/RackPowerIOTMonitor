@@ -11,7 +11,7 @@
 // =========================================================
 
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-const publicKey = "BAvoKBUHaF1sy1-l2mUdTlMls0zwsYpsCmXvLsxXpLdeYTnKOZvS--Ia9HgQuTINB9EeVwzhRUYwBNxZOc84axI";
+const publicKey = "BIwxyzlV6TbuuRpdKP-zISQKJ8J4-TBcLLN0nQzF4amUZ3zHXsGW6DVR17NcTHLXcUATABin_z4xTh9kvRsJl0g";
 
 window.onload = () => {
   // (A1) ASK FOR PERMISSION
