@@ -68,7 +68,6 @@ void setup() {
   lcd.setCursor(0, 1);
   lcd.print("     COIN      ");
   Timer = millis();
-  GetSTOCK();
   // virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "   ");
   // virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "   ");
   // // myservo.attach(MOTOR2);  // attaches the servo on pin 13 to the servo object
@@ -101,6 +100,9 @@ void setup() {
   }
   // Print ESP32 Local IP Address
   Serial.println(WiFi.localIP());
+
+  GetSTOCK();
+
 }
 
 void loop() {
@@ -224,6 +226,7 @@ void GetSTOCK() {
     // Send HTTP POST request
     int httpResponseCode = http.POST(httpRequestData);
     String payload = "{}";
+        String payload = http.getString();
 
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
