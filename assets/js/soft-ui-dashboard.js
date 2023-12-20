@@ -11,6 +11,7 @@
 // =========================================================
 
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+const publicKey = "BAvoKBUHaF1sy1-l2mUdTlMls0zwsYpsCmXvLsxXpLdeYTnKOZvS--Ia9HgQuTINB9EeVwzhRUYwBNxZOc84axI";
 
 window.onload = () => {
   // (A1) ASK FOR PERMISSION
@@ -35,7 +36,6 @@ window.onload = () => {
 // (B) REGISTER SERVICE WORKER
 async function regWorker () {
   // (B1) YOUR PUBLIC KEY - CHANGE TO YOUR OWN!
-  const publicKey = "BAvoKBUHaF1sy1-l2mUdTlMls0zwsYpsCmXvLsxXpLdeYTnKOZvS--Ia9HgQuTINB9EeVwzhRUYwBNxZOc84axI";
  
   // (B2) REGISTER SERVICE WORKER
   navigator.serviceWorker.register("sw.js");
@@ -634,7 +634,6 @@ function replay2() {
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "functions.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
 
   xhttp.onload = function () {
     var data = JSON.parse(this.responseText);
