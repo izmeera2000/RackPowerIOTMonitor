@@ -172,6 +172,7 @@ include('functions.php');
   <?php include('corejs.php') ?>
   <script>
     var run = setInterval(replay, 1000)
+    var run2 = setInterval(replay2, 1000)
 
 
   </script>

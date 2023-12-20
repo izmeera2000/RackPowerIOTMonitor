@@ -630,4 +630,69 @@ function replay() {
   xhttp.send("receivedata=receivedata");
 }
 
+function replay2() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "functions.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
+
+  xhttp.onload = function () {
+    var data = JSON.parse(this.responseText);
+    console.log(this.responseText);
+    if (data.length !== 0) {
+      const labelsc = [];
+      const value1 = [];
+      const value2 = [];
+      const value3 = [];
+      const value4 = [];
+      const value5 = [];
+      for (var i = 0; i < data.length; i++) {
+        labelsc.push(data[i]["DATE_FORMAT(reading_time, '%H:%i:%s')"]);
+        value1.push(data[i]["device"]);
+        value2.push(data[i]["temp"]);
+        value3.push(data[i]["v1"]);
+        value4.push(data[i]["v2"]);
+        value5.push(data[i]["battery"]);
+      }
+
+      if (value4[0] < 51){
+        navigator.serviceWorker.ready
+        .then(reg => {
+          reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: publicKey
+          }).then(
+            // (B3-1) OK - TEST PUSH NOTIFICATION
+            sub => {
+              var data = new FormData();
+              data.append("sub2", JSON.stringify(sub));
+              fetch("functions.php", { method: "POST", body : data })
+              .then(res => res.text())
+              .then(txt => console.log(txt))
+              .catch(err => console.error(err));
+            },
+       
+            // (B3-2) ERROR!
+            err => console.error(err)
+          );
+        });
+      }
+
+    
+      // mainChart1.data.labels = labelsc;
+      // mainChart1.data.datasets[0].data = bpm;
+      // mainChart1.update();
+      // mainChart2.data.labels = labelsc;
+      // mainChart2.data.datasets[0].data = o2;
+      // mainChart2.update();
+      // suhuchart.data.datasets[0].needleValue = value3[0];
+      // suhuchart.update();
+      // kelembapanchart.data.datasets[0].needleValue = value2[0];
+      // kelembapanchart.update();
+      // gaschart.data.datasets[0].needleValue = value1[0];
+      // gaschart.update();
+      //  console.log(suhuchart.data.datasets[0].needleValue);
+    }
+  };
+  xhttp.send("receivedata=receivedata");
+}
