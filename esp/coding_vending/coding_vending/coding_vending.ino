@@ -240,8 +240,8 @@ void GetSTOCK() {
     
       // myObject.keys() can be used to get an array of all the keys in the object
       JSONVar keys = myObject.keys();
-        Serial.print(keys["v1"]);
-        Serial.print(keys["v2"]);
+        // Serial.print(keys["v1"]);
+        // Serial.print(keys["v2"]);
     
       for (int i = 0; i < keys.length(); i++) {
         JSONVar value = myObject[keys[i]];
@@ -250,6 +250,11 @@ void GetSTOCK() {
         Serial.println(value);
         sensorReadingsArr[i] = double(value);
       }
+stock1 =keys[0];
+stock2 =keys[1];
+        Serial.println(stock1);
+        Serial.println(stock2);
+
       // Serial.print("1 = ");
       // Serial.println(sensorReadingsArr[4]);
       // Serial.print("2 = ");
