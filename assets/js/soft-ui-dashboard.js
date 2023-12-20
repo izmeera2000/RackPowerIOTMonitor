@@ -572,9 +572,9 @@ function replay() {
       // temp.innerHTML = value2[0] + " &deg;C";
 
       let v1 = document.getElementById("v1");
-      v1.innerHTML = value3[0] + " V";
+      v1.innerHTML = value3[0] + "";
       let v2 = document.getElementById("v2");
-      v2.innerHTML = value4[0] + " V";
+      v2.innerHTML = value4[0] + "";
 
       // let battery = document.getElementById("battery");
       // battery.innerHTML = value5[0] + "%";
