@@ -105,10 +105,10 @@ void setup() {
 
 void loop() {
   // Blynk.run();
-  Serial.println(count);
+  // Serial.println(count);
   if (millis() - Timer > 1000) {
     countreal = count - 100;
-    Serial.println("COUNTREAL:" + String(countreal) + " ");
+    // Serial.println("COUNTREAL:" + String(countreal) + " ");
     Timer = millis();
   }
 
