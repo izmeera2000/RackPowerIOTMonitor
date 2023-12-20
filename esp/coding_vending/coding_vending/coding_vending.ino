@@ -44,7 +44,8 @@ int noty1 = 0;
 int noty2 = 0;
 int pos;
 TaskHandle_t Task1;
-
+String sensorReadings;
+float sensorReadingsArr[3];
 unsigned long lastTime = 0;
 
 unsigned long timerDelay = 1000;
