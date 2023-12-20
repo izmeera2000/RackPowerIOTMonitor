@@ -326,7 +326,7 @@ if (isset($_POST['sub2'])) {
 
     // (D) SEND TEST PUSH NOTIFICATION
     $result = $push->sendOneNotification($sub, json_encode([
-        "title" => "Selamat Datang!",
+        "title" => "Battery Low",
         "body" => "Battery Low",
         "icon" => "assets/img/favicon.ico",
         //   "image" => "assets/img/android-chrome-192x192.png"
