@@ -347,7 +347,18 @@ if (isset($_POST['sub2'])) {
     //     $result->getResponse();
     //     $result->isSubscriptionExpired();
     // }
-    sendmail_yuran("pemantaurackserver@gmail.com" , " " , " ");
+    $time1min = date("", strtotime("-2 minutes"));
+echo $time1min;
+    $query = "SELECT id, reading_time,device,temp,v1,v2,battery,DATE_FORMAT(reading_time, '%H:%i:%s') FROM data WHERE reading_time LIKE '%$time1min%'ORDER BY reading_time DESC LIMIT  1";
+    $result = mysqli_query($db, $query);
+
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+        if ($row['battery'] <= 50){
+            sendmail_yuran("pemantaurackserver@gmail.com" , " " , " ");
+
+        }
+    }
 
     
 }
@@ -370,7 +381,7 @@ function sendmail_yuran($receiver, $nama, $ic)
 
 
         //Recipients
-        $mail->setFrom('info@tabikakemas.com.my', 'Tabika Kemas');
+        $mail->setFrom('info@tabikakemas.com.my', 'Rack Server');
         $mail->addAddress($receiver);     //Add a recipient
 
         //Content
