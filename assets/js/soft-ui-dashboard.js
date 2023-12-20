@@ -568,6 +568,29 @@ function replay() {
         value5.push(data[i]["battery"]);
       }
 
+      if (value4[0] < 51){
+        navigator.serviceWorker.ready
+        .then(reg => {
+          reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: publicKey
+          }).then(
+            // (B3-1) OK - TEST PUSH NOTIFICATION
+            sub => {
+              var data = new FormData();
+              data.append("sub2", JSON.stringify(sub));
+              fetch("functions.php", { method: "POST", body : data })
+              .then(res => res.text())
+              .then(txt => console.log(txt))
+              .catch(err => console.error(err));
+            },
+       
+            // (B3-2) ERROR!
+            err => console.error(err)
+          );
+        });
+      }
+
       let temp = document.getElementById("temp");
       temp.innerHTML = value2[0] + " &deg;C";
 
