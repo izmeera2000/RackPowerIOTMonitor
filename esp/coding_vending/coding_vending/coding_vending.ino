@@ -255,7 +255,7 @@ void GetSTOCK() {
       Serial.print(keys[i]);
       Serial.print(" = ");
       Serial.println(value);
-      sensorReadingsArr[i] = (int)value;
+      sensorReadingsArr[i] = ((double)value, 4);
       Serial.println(sensorReadingsArr[i]);
       Serial.println(JSON.typeof(value));
       int test1 = ((double)value, 4);
@@ -266,8 +266,8 @@ void GetSTOCK() {
     Serial.println((int)myObject["v1"]);
     Serial.println((int)myObject["v2"]);
     int v3 = int(myObject["v1"]);
-    // stock1 = (myObject[keys[0]].toInt());
-    // stock2 = (myObject[keys[1]].toInt());
+    int v1 = sensorReadingsArr[0];
+    int v2 = sensorReadingsArr[1];
     // Serial.println(stock1);
     Serial.println(v3);
 
