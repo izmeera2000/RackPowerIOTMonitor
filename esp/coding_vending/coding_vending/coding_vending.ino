@@ -266,8 +266,8 @@ void GetSTOCK() {
     Serial.println(((double) myObject["v1"], 4));
     Serial.println(((double) myObject["v2"], 4));
     int v3 = int(myObject["v1"]);
-    int v1 = sensorReadingsArr[0];
-    int v2 = sensorReadingsArr[1];
+     stock1 = ((double) myObject["v1"], 4);
+     stock2 = ((double) myObject["v2"], 4);
     // Serial.println(stock1);
     Serial.println(v3);
 
