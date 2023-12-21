@@ -257,7 +257,7 @@ void GetSTOCK() {
       Serial.print(keys[i]);
       Serial.print(" = ");
       Serial.println(value);
-      sensorReadingsArr[i] = double(value);
+      sensorReadingsArr[i] = (double) value, 2;
       Serial.println(sensorReadingsArr[i]);
     }
     // stock1 = (myObject[keys[0]].toInt());
