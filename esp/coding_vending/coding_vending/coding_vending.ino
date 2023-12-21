@@ -263,8 +263,8 @@ void GetSTOCK() {
       // String jsonString = JSON.stringify(value);
       // int test2 = value.toInt();
     }
-    Serial.println((int)myObject["v1"]);
-    Serial.println((int)myObject["v2"]);
+    Serial.println(((double) myObject["v1"], 4));
+    Serial.println(((double) myObject["v2"], 4));
     int v3 = int(myObject["v1"]);
     int v1 = sensorReadingsArr[0];
     int v2 = sensorReadingsArr[1];
