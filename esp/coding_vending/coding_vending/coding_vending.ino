@@ -102,19 +102,17 @@ void setup() {
   }
   // Print ESP32 Local IP Address
   Serial.println(WiFi.localIP());
-
 }
 
 void loop() {
   // Blynk.run();
   if (millis() - Timer > 1000) {
-  Serial.println(count);
+    Serial.println(count);
 
     countreal = count - 100;
     Serial.println("COUNTREAL:" + String(countreal) + " ");
     Timer = millis();
-  GetSTOCK();
-
+    GetSTOCK();
   }
 
   //DUIT SYIILING
@@ -150,7 +148,7 @@ void loop() {
     }
     total = total - set1;
     stock1--;
-    buySTOCK(stock1 , stock2);
+    buySTOCK(stock1, stock2);
 
     // virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
     lcd.setCursor(0, 0);
@@ -169,7 +167,7 @@ void loop() {
     }
     total = total - set2;
     stock2--;
-    buySTOCK(stock1 , stock2);
+    buySTOCK(stock1, stock2);
     // virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
     lcd.setCursor(0, 0);
     lcd.print("    SNACK 2    ");
@@ -250,22 +248,24 @@ void GetSTOCK() {
     JSONVar keys = myObject.keys();
     // Serial.print(keys["v1"]);
     // Serial.print(keys["v2"]);
-      Serial.print(keys.length());
+    Serial.print(keys.length());
 
     for (int i = 0; i < keys.length(); i++) {
       JSONVar value = myObject[keys[i]];
       Serial.print(keys[i]);
       Serial.print(" = ");
       Serial.println(value);
-      sensorReadingsArr[i] = (int) value;
+      sensorReadingsArr[i] = (int)value;
       Serial.println(sensorReadingsArr[i]);
       Serial.println(JSON.typeof(value));
-      int test1 = (double) value, 4;
+      int test1 = (double)value, 4;
       Serial.println(test1);
       // String jsonString = JSON.stringify(value);
       // int test2 = value.toInt();
-
     }
+    Serial.println((int)myObject["v1"]);
+    Serial.println((int)myObject["v2"]);
+
     // stock1 = (myObject[keys[0]].toInt());
     // stock2 = (myObject[keys[1]].toInt());
     // Serial.println(stock1);
@@ -304,7 +304,7 @@ void buySTOCK(int a, int b) {
   if (httpResponseCode > 0) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
-    
+
   } else {
     Serial.print("Error code: ");
     Serial.println(httpResponseCode);
