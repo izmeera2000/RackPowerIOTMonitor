@@ -168,6 +168,7 @@ void loop() {
     total = total - set2;
     stock2--;
     buySTOCK(stock1, stock2);
+
     // virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
     lcd.setCursor(0, 0);
     lcd.print("    SNACK 2    ");
@@ -248,27 +249,32 @@ void GetSTOCK() {
     JSONVar keys = myObject.keys();
     // Serial.print(keys["v1"]);
     // Serial.print(keys["v2"]);
-    Serial.print(keys.length());
+    // Serial.print(keys.length());
 
     for (int i = 0; i < keys.length(); i++) {
       JSONVar value = myObject[keys[i]];
       Serial.print(keys[i]);
       Serial.print(" = ");
       Serial.println(value);
-      sensorReadingsArr[i] = ((double)value, 4);
-      Serial.println(sensorReadingsArr[i]);
-      Serial.println(JSON.typeof(value));
-      int test1 = ((double)value, 4);
-      Serial.println(test1);
+      // sensorReadingsArr[i] = ((double)value, 4);
+      // Serial.println(sensorReadingsArr[i]);
+      // Serial.println(JSON.typeof(value));
+      // int test1 = ((double)value, 4);
+      // Serial.println(test1);
       // String jsonString = JSON.stringify(value);
       // int test2 = value.toInt();
     }
-    Serial.println(((double) myObject["v1"], 4));
-    Serial.println(((double) myObject["v2"], 4));
-    int v3 = int(myObject["v1"]);
+    // Serial.println(((double) myObject["v1"], 4));
+    // Serial.println(((double) myObject["v2"], 4));
+    // int v3 = int(myObject["v1"]);
      stock1 = ((double) myObject["v1"], 4);
      stock2 = ((double) myObject["v2"], 4);
+    // Serial.print("1 = ");
+
+    Serial.print("1 = ");
     Serial.println(stock1);
+    Serial.print("2 = ");
+
     Serial.println(stock2);
 
     // Serial.print("1 = ");
