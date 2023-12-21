@@ -107,8 +107,9 @@ void setup() {
 
 void loop() {
   // Blynk.run();
-  Serial.println(count);
   if (millis() - Timer > 1000) {
+  Serial.println(count);
+
     countreal = count - 100;
     Serial.println("COUNTREAL:" + String(countreal) + " ");
     Timer = millis();
@@ -207,6 +208,8 @@ void loop() {
 
 
 void billAcceptor() {
+  Serial.println(count);
+
   count++;
 }
 
@@ -247,6 +250,7 @@ void GetSTOCK() {
     JSONVar keys = myObject.keys();
     // Serial.print(keys["v1"]);
     // Serial.print(keys["v2"]);
+      Serial.print(keys.length());
 
     for (int i = 0; i < keys.length(); i++) {
       JSONVar value = myObject[keys[i]];
