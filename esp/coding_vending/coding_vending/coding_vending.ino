@@ -45,7 +45,7 @@ int noty2 = 0;
 int pos;
 TaskHandle_t Task1;
 String sensorReadings;
-int sensorReadingsArr[2];
+float sensorReadingsArr[2];
 unsigned long lastTime = 0;
 
 unsigned long timerDelay = 1000;
@@ -260,6 +260,11 @@ void GetSTOCK() {
       sensorReadingsArr[i] = (int) value;
       Serial.println(sensorReadingsArr[i]);
       Serial.println(JSON.typeof(value));
+      int test1 = (int) value;
+      Serial.println(test1);
+      String jsonString = JSON.stringify(value);
+      int test2= value.toInt();
+
     }
     // stock1 = (myObject[keys[0]].toInt());
     // stock2 = (myObject[keys[1]].toInt());
