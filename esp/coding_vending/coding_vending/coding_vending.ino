@@ -30,7 +30,7 @@ String apikey = "tPmAT5Ab3j7F9";
 WiFiClientSecure client;
 
 // WidgetLCD virtualLCD(V0);
-const byte interruptPin = 23;
+const byte interruptPin = 25;
 int count = 100;
 int countreal = 0;
 float total = 0.0;
