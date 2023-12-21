@@ -107,10 +107,10 @@ void setup() {
 
 void loop() {
   // Blynk.run();
-  // Serial.println(count);
+  Serial.println(count);
   if (millis() - Timer > 1000) {
     countreal = count - 100;
-    // Serial.println("COUNTREAL:" + String(countreal) + " ");
+    Serial.println("COUNTREAL:" + String(countreal) + " ");
     Timer = millis();
   GetSTOCK();
 
@@ -255,8 +255,8 @@ void GetSTOCK() {
       Serial.println(value);
       sensorReadingsArr[i] = double(value);
     }
-    stock1 = int(myObject[keys[0]]);
-    stock2 = int(myObject[keys[1]]);
+    stock1 = (myObject[keys[0]].toInt());
+    stock2 = (myObject[keys[1]].toInt());
     Serial.println(stock1);
     Serial.println(stock2);
 
