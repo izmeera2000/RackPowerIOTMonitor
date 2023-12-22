@@ -29,7 +29,6 @@ String devicename = "BME280";
 String apikey = "tPmAT5Ab3j7F9";
 WiFiClientSecure client;
 
-// WidgetLCD virtualLCD(V0);
 const byte interruptPin = 25;
 int count = 100;
 int countreal = 0;
@@ -38,8 +37,8 @@ unsigned long Timer = 0;
 int timedelay = 1300;
 const float set1 = 0.50;
 const float set2 = 1.00;
-int stock1;
-int stock2;
+int stock1 =5;
+int stock2 = 5;
 int noty1 = 0;
 int noty2 = 0;
 int pos;
@@ -93,15 +92,15 @@ void setup() {
 
 
 
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Connecting to WiFi..");
-    GetSTOCK();
-  }
+  // WiFi.mode(WIFI_STA);
+  // WiFi.begin(ssid, password);
+  // while (WiFi.status() != WL_CONNECTED) {
+  //   delay(1000);
+  //   Serial.println("Connecting to WiFi..");
+  //   GetSTOCK();
+  // }
   // Print ESP32 Local IP Address
-  Serial.println(WiFi.localIP());
+  // Serial.println(WiFi.localIP());
 }
 
 void loop() {
@@ -112,7 +111,7 @@ void loop() {
     countreal = count - 100;
     Serial.println("COUNTREAL:" + String(countreal) + " ");
     Timer = millis();
-    GetSTOCK();
+    // GetSTOCK();
   }
 
   //DUIT SYIILING
@@ -148,7 +147,7 @@ void loop() {
     }
     total = total - set1;
     stock1--;
-    buySTOCK(stock1, stock2);
+    // buySTOCK(stock1, stock2);
 
     // virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
     lcd.setCursor(0, 0);
@@ -167,7 +166,7 @@ void loop() {
     }
     total = total - set2;
     stock2--;
-    buySTOCK(stock1, stock2);
+    // buySTOCK(stock1, stock2);
 
     // virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
     lcd.setCursor(0, 0);
@@ -213,108 +212,108 @@ void billAcceptor() {
 }
 
 
-void GetSTOCK() {
+// void GetSTOCK() {
 
-  HTTPClient http;
+//   HTTPClient http;
 
-  String serverPath = serverName + "?api_key=1";
+//   String serverPath = serverName + "?api_key=1";
 
-  // Your Domain name with URL path or IP address with path
-  http.begin(serverPath.c_str());
+//   // Your Domain name with URL path or IP address with path
+//   http.begin(serverPath.c_str());
 
-  // If you need Node-RED/server authentication, insert user and password below
-  //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
+//   // If you need Node-RED/server authentication, insert user and password below
+//   //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
 
-  // Send HTTP GET request
-  int httpResponseCode = http.GET();
+//   // Send HTTP GET request
+//   int httpResponseCode = http.GET();
 
-  if (httpResponseCode > 0) {
-    Serial.print("HTTP Response code: ");
-    Serial.println(httpResponseCode);
-    String payload = http.getString();
-    Serial.println(payload);
+//   if (httpResponseCode > 0) {
+//     Serial.print("HTTP Response code: ");
+//     Serial.println(httpResponseCode);
+//     String payload = http.getString();
+//     Serial.println(payload);
 
-    JSONVar myObject = JSON.parse(payload);
+//     JSONVar myObject = JSON.parse(payload);
 
-    // JSON.typeof(jsonVar) can be used to get the type of the var
-    if (JSON.typeof(myObject) == "undefined") {
-      Serial.println("Parsing input failed!");
-      return;
-    }
+//     // JSON.typeof(jsonVar) can be used to get the type of the var
+//     if (JSON.typeof(myObject) == "undefined") {
+//       Serial.println("Parsing input failed!");
+//       return;
+//     }
 
-    Serial.print("JSON object = ");
-    Serial.println(myObject);
+//     Serial.print("JSON object = ");
+//     Serial.println(myObject);
 
-    // myObject.keys() can be used to get an array of all the keys in the object
-    JSONVar keys = myObject.keys();
-    // Serial.print(keys["v1"]);
-    // Serial.print(keys["v2"]);
-    // Serial.print(keys.length());
+//     // myObject.keys() can be used to get an array of all the keys in the object
+//     JSONVar keys = myObject.keys();
+//     // Serial.print(keys["v1"]);
+//     // Serial.print(keys["v2"]);
+//     // Serial.print(keys.length());
 
-    for (int i = 0; i < keys.length(); i++) {
-      JSONVar value = myObject[keys[i]];
-      Serial.print(keys[i]);
-      Serial.print(" = ");
-      Serial.println(value);
-      // sensorReadingsArr[i] = ((double)value, 4);
-      // Serial.println(sensorReadingsArr[i]);
-      // Serial.println(JSON.typeof(value));
-      // int test1 = ((double)value, 4);
-      // Serial.println(test1);
-      // String jsonString = JSON.stringify(value);
-      // int test2 = value.toInt();
-    }
-    // Serial.println(((double) myObject["v1"], 4));
-    // Serial.println(((double) myObject["v2"], 4));
-    // int v3 = int(myObject["v1"]);
-     stock1 = ((double) myObject["v1"], 4);
-     stock2 = ((double) myObject["v2"], 4);
-    // Serial.print("1 = ");
+//     for (int i = 0; i < keys.length(); i++) {
+//       JSONVar value = myObject[keys[i]];
+//       Serial.print(keys[i]);
+//       Serial.print(" = ");
+//       Serial.println(value);
+//       // sensorReadingsArr[i] = ((double)value, 4);
+//       // Serial.println(sensorReadingsArr[i]);
+//       // Serial.println(JSON.typeof(value));
+//       // int test1 = ((double)value, 4);
+//       // Serial.println(test1);
+//       // String jsonString = JSON.stringify(value);
+//       // int test2 = value.toInt();
+//     }
+//     // Serial.println(((double) myObject["v1"], 4));
+//     // Serial.println(((double) myObject["v2"], 4));
+//     // int v3 = int(myObject["v1"]);
+//      stock1 = ((double) myObject["v1"], 4);
+//      stock2 = ((double) myObject["v2"], 4);
+//     // Serial.print("1 = ");
 
-    Serial.print("1 = ");
-    Serial.println(stock1);
-    Serial.print("2 = ");
+//     Serial.print("1 = ");
+//     Serial.println(stock1);
+//     Serial.print("2 = ");
 
-    Serial.println(stock2);
+//     Serial.println(stock2);
 
-    // Serial.print("1 = ");
-    // Serial.println(sensorReadingsArr[4]);
-    // Serial.print("2 = ");
-    // Serial.println(sensorReadingsArr[5]);
-    // Serial.print("3 = ");
-    // Serial.println(sensorReadingsArr[2]);
-  } else {
-    Serial.print("Error code: ");
-    Serial.println(httpResponseCode);
-  }
-  // Free resources
-  http.end();
-}
+//     // Serial.print("1 = ");
+//     // Serial.println(sensorReadingsArr[4]);
+//     // Serial.print("2 = ");
+//     // Serial.println(sensorReadingsArr[5]);
+//     // Serial.print("3 = ");
+//     // Serial.println(sensorReadingsArr[2]);
+//   } else {
+//     Serial.print("Error code: ");
+//     Serial.println(httpResponseCode);
+//   }
+//   // Free resources
+//   http.end();
+// }
 
 
-void buySTOCK(int a, int b) {
+// void buySTOCK(int a, int b) {
 
-  HTTPClient http;
+//   HTTPClient http;
 
-  String serverPath = serverName + "?stock1=" + a + "&stock2=" + b;
+//   String serverPath = serverName + "?stock1=" + a + "&stock2=" + b;
 
-  // Your Domain name with URL path or IP address with path
-  http.begin(serverPath.c_str());
+//   // Your Domain name with URL path or IP address with path
+//   http.begin(serverPath.c_str());
 
-  // If you need Node-RED/server authentication, insert user and password below
-  //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
+//   // If you need Node-RED/server authentication, insert user and password below
+//   //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
 
-  // Send HTTP GET request
-  int httpResponseCode = http.GET();
+//   // Send HTTP GET request
+//   int httpResponseCode = http.GET();
 
-  if (httpResponseCode > 0) {
-    Serial.print("HTTP Response code: ");
-    Serial.println(httpResponseCode);
+//   if (httpResponseCode > 0) {
+//     Serial.print("HTTP Response code: ");
+//     Serial.println(httpResponseCode);
 
-  } else {
-    Serial.print("Error code: ");
-    Serial.println(httpResponseCode);
-  }
-  // Free resources
-  http.end();
-}
+//   } else {
+//     Serial.print("Error code: ");
+//     Serial.println(httpResponseCode);
+//   }
+//   // Free resources
+//   http.end();
+// }
